@@ -1,0 +1,83 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 1.2rem;
+  font-family: "Birthstone", sans-serif;
+  button {
+    border-color: #5d405b;
+    background-color: #f5f0f3;
+    cursor: pointer;
+    color: #5d405b;
+  }
+  input {
+    border: 1px solid #5d405b;
+    background-color: #f5f0f3;
+    color: #5d405b;
+    padding: 5px;
+    font-size: 1.2rem;
+    width: 100%;
+    &:focus {
+      outline: none;
+      border-color: #5d405b;
+    }
+  }
+
+  .btn-cancel {
+    background-color: transparent;
+    border: none;
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .btn-save {
+    background-color: transparent;
+    color: #5d405b;
+    border-color: green;
+    padding: 5px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+  }
+  .btn-edit {
+    background-color: transparent;
+    color: #5d405b;
+    border-color: #5d405b;
+    padding: 5px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+  }
+}
+
+thead {
+  background-color: #5d405b;
+  color: #f5f0f3;
+  text-align: left;
+  th {
+    padding: 10px;
+    font-size: 1.5rem;
+  }
+}
+tbody {
+  tr {
+    background-color: #f5f0f3;
+    color: #5d405b;
+    &:nth-child(even) {
+      background-color: #e8d8e1;
+    }
+    td {
+      padding: 10px;
+      text-align: left;
+      font-size: 1.2rem;
+    }
+    td:nth-child(4),
+    th:nth-child(4) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}

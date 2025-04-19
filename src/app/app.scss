@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.main {
+  padding-top: 100px;
+  flex: 1;
+  margin: 0 auto;
+  h2 {
+    padding-top: 50px;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #5d405b;
+    text-align: center;
+  }
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #5d405b;
+    text-align: center;
+  }
+}
