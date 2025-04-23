@@ -7,11 +7,10 @@ export default function Footer() {
       <a href="/">
         <img src="../public/logo1.svg" alt="logo" />
       </a>
-      <p>© 2025 English Learning App</p>
+      <p>© 2025 Easy Words</p>
       <div className="footer__links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Contact Us</a>
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Контакты</a>
       </div>
     </footer>
   );
