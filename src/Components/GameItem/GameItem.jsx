@@ -1,16 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../GameItem/GameItem.scss";
 import wordData from "../../data/words.json";
+import Game from "../../Pages/Game/Game";
 
-const GameCard = ({ word, transcription, translation }) => {
+const GameCard = ({ word, transcription, translation, onLearned }) => {
   const [showTranslation, setShowTranslation] = useState(false);
+  const buttonRef = useRef(null);
+
+  const handleShowTranslation = () => {
+    if (!showTranslation) {
+      onLearned();
+      setShowTranslation(true);
+    }
+  };
+  useEffect(() => {
+    setShowTranslation(false);
+    if (buttonRef.current) {
+      buttonRef.current.focus();
+    }
+  }, [word]);
 
   return (
     <div className="game-card">
       <h2>{word}</h2>
       <p className="transcription">{transcription}</p>
       {!showTranslation ? (
-        <button onClick={() => setShowTranslation(true)}>
+        <button
+          className="show-btn"
+          ref={buttonRef}
+          onClick={handleShowTranslation}
+        >
           Показать перевод
         </button>
       ) : (
@@ -20,7 +39,7 @@ const GameCard = ({ word, transcription, translation }) => {
   );
 };
 
-const GameItem = ({ active }) => {
+const GameItem = ({ active, onLearned }) => {
   const [words, setWords] = useState([]);
 
   useEffect(() => {
@@ -37,6 +56,7 @@ const GameItem = ({ active }) => {
           word={currentWord.english}
           transcription={currentWord.transcription}
           translation={currentWord.russian}
+          onLearned={onLearned}
         />
       )}
     </div>
