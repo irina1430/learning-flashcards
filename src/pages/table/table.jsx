@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { MdModeEdit } from "react-icons/md";
 import { MdCancel } from "react-icons/md";
 import { FcOk } from "react-icons/fc";
-import wordsData from "../../data/words.json";
+import LoadingItem from "../../Components/LoadingItem/LoadingItem";
 import "../Table/Table.scss";
 
 const Table = () => {
   const [words, setWords] = useState([]);
   const [editingId, setEditingId] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [currentEdit, setCurrentEdit] = useState({
     english: "",
     russian: "",
@@ -15,9 +16,19 @@ const Table = () => {
   });
 
   useEffect(() => {
-    setWords(wordsData);
+    fetch("https://itgirlschool.justmakeit.ru/api/words")
+      .then((res) => res.json())
+      .then((data) => {
+        setWords(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Ошибка:", err);
+        setLoading(false);
+      });
   }, []);
 
+  if (loading) return <LoadingItem />;
   const handleEdit = (id) => {
     const wordToEdit = words.find((word) => word.id === id);
     setCurrentEdit({

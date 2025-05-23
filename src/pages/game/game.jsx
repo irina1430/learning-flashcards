@@ -1,24 +1,11 @@
-import React from "react";
-import { useState } from "react";
+import { useContext } from "react";
+import { WordContext } from "../../context/WordContext";
 import { GameItem } from "../../Components/GameItem/GameItem";
 import "./game.scss";
-import wordData from "../../data/words.json";
 
 export default function Game() {
-  const [active, setActive] = useState(0);
-  const [learnedCount, setLearnedCount] = useState(0);
-
-  function updIndexNext() {
-    setActive((prevActive) => (prevActive + 1) % wordData.length);
-  }
-  function updIndexPrev() {
-    setActive((prevActive) =>
-      prevActive === 0 ? wordData.length - 1 : prevActive - 1
-    );
-  }
-  function handleLearned() {
-    setLearnedCount((prev) => prev + 1);
-  }
+  const { active, learnedCount, updIndexNext, updIndexPrev, handleLearned } =
+    useContext(WordContext);
 
   return (
     <div className="game-wrapper">

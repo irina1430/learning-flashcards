@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../GameItem/GameItem.scss";
 import wordData from "../../data/words.json";
 import Game from "../../Pages/Game/Game";
